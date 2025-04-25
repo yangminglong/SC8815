@@ -329,6 +329,7 @@ void SC8815_SetOutputVoltage(uint16_t NewVolt);     //设置 OTG 反向输出电
 void SC8815_SetBusCurrentLimit(uint16_t NewILIM);   //设置 VBUS 限流
 void SC8815_SetBatteryCurrLimit(uint16_t NewILIM);  //设置电池限流
 void SC8815_VINREG_SetVoltage(uint16_t NewVolt);    //设置 VINREG 电压
+void SC8815_VINREG_SetVoltage2(uint16_t NewVolt, uint16_t RATIO_Value);    //设置 VINREG 电压
 
 //SC8815 获取参数设置值函数
 uint16_t SC8815_GetOutputVoltage(void);             //获取 OTG 反向输出电压

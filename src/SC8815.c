@@ -372,6 +372,16 @@ void SC8815_VINREG_SetVoltage(uint16_t NewVolt)
     RATIO_Value = ((I2C_ReadRegByte(SC8815_ADDR, SCREG_CTRL0_SET) & 0x10) == 16) ? 40 : 100;    //取得 VINREG 的比率
     I2C_WriteRegByte(SC8815_ADDR, SCREG_VINREG_SET, (NewVolt / RATIO_Value) - 1);               //写入到 SC8815 寄存器
 }
+/****************************************
+* @brief    设置 SC8815 VINREG 电压值 (类似 MPPT)
+* @param    NewVolt 新的单位为 mV 的 VINREG 电压设定值
+* @param    RATIO_Value 电压比率值, 例如 100, 40,等等
+* @note     不得输入超出最大可设定值的电压值
+*****************************************/
+void SC8815_VINREG_SetVoltage2(uint16_t NewVolt, uint16_t RATIO_Value)
+{
+    I2C_WriteRegByte(SC8815_ADDR, SCREG_VINREG_SET, (NewVolt / RATIO_Value) - 1);               //写入到 SC8815 寄存器
+}
 
 /****************************************
 * @brief    获取 SC8815 在 OTG 反向输出时的输出电压设定值
